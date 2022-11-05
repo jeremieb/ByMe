@@ -27,7 +27,7 @@ public struct MyAppsView: View {
                     Link(destination: URL(string: app.url)!) {
                         VStack(alignment: .center) {
                             Image(app.appicon, bundle: .module).frame(width: 44, height: 44).cornerRadius(12)
-                            Text(app.name).modifier(MyAppsNameModifier())
+                            Text(app.name)
                             Spacer()
                         }.frame(height: 90).frame(maxWidth: 52).padding(.horizontal)
                     }
@@ -38,10 +38,19 @@ public struct MyAppsView: View {
 }
 
 @available(macOS 13.0, *)
-struct MyAppsNameModifier: ViewModifier {
+struct MyAppsSerifModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(.caption, design: .serif, weight: .medium))
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+    }
+}
+
+struct MyAppsRoundedModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(.caption, design: .rounded, weight: .medium))
             .multilineTextAlignment(.center)
             .lineLimit(2)
     }
