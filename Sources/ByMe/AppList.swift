@@ -26,7 +26,7 @@ public struct MyAppsView: View {
                 ForEach(MyApps.list, id: \.self) { app in
                     Link(destination: URL(string: app.url)!) {
                         VStack(alignment: .center) {
-                            Image(app.appicon).frame(width: 44, height: 44).cornerRadius(12)
+                            Image(app.appicon, bundle: .module).frame(width: 44, height: 44).cornerRadius(12)
                             Text(app.name).modifier(MyAppsNameModifier())
                             Spacer()
                         }.frame(height: 90).frame(maxWidth: 52).padding(.horizontal)
