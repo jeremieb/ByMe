@@ -16,6 +16,8 @@ final class MyApps {
     static let yorikiri: AnApp = AnApp(name: "Yorikiri", url: "https://apple.co/3FHZSRo", appicon: "yorikiri-app")
     
     static let list: [AnApp] = [shoobie, demeter, densha, yorikiri]
+    //https://tools.applemediaservices.com/app/1488166941?country=us
+    //https://tools.applemediaservices.com/app/1614712181?country=us
 }
 
 @available(macOS 13.0, *)
