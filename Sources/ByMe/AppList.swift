@@ -21,7 +21,7 @@ final class MyApps {
 @available(macOS 13.0, *)
 public struct MyAppsView: View {
     public var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 8) {
                 ForEach(MyApps.list, id: \.self) { app in
                     Link(destination: URL(string: app.url)!) {
