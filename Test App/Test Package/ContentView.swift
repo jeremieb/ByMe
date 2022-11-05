@@ -9,14 +9,16 @@ import SwiftUI
 import ByMe
 
 struct ContentView: View {
+    
+    var content = ByMe.init().text
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+            Text(content)
+        }.padding()
     }
 }
 

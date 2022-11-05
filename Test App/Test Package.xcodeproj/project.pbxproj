@@ -11,6 +11,7 @@
 		020B484429166ED600BCA12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B484329166ED600BCA12E /* ContentView.swift */; };
 		020B484629166ED700BCA12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020B484529166ED700BCA12E /* Assets.xcassets */; };
 		020B484A29166ED700BCA12E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020B484929166ED700BCA12E /* Preview Assets.xcassets */; };
+		02979E212916715F00503DF1 /* ByMe in Frameworks */ = {isa = PBXBuildFile; productRef = 02979E202916715F00503DF1 /* ByMe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02979E212916715F00503DF1 /* ByMe in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +87,9 @@
 			dependencies = (
 			);
 			name = "Test Package";
+			packageProductDependencies = (
+				02979E202916715F00503DF1 /* ByMe */,
+			);
 			productName = "Test Package";
 			productReference = 020B483E29166ED600BCA12E /* Test Package.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,7 @@
 			);
 			mainGroup = 020B483529166ED600BCA12E;
 			packageReferences = (
+				02979E1F2916715F00503DF1 /* XCRemoteSwiftPackageReference "ByMe" */,
 			);
 			productRefGroup = 020B483F29166ED600BCA12E /* Products */;
 			projectDirPath = "";
@@ -356,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		02979E1F2916715F00503DF1 /* XCRemoteSwiftPackageReference "ByMe" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jeremieb/ByMe";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02979E202916715F00503DF1 /* ByMe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02979E1F2916715F00503DF1 /* XCRemoteSwiftPackageReference "ByMe" */;
+			productName = ByMe;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 020B483629166ED600BCA12E /* Project object */;
 }

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "byme",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jeremieb/ByMe",
+      "state" : {
+        "branch" : "main",
+        "revision" : "36c4e4826b90741a63005ff55821734f59f9b3e3"
+      }
+    }
+  ],
+  "version" : 2
+}
