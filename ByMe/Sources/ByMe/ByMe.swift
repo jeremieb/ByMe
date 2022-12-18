@@ -1,49 +1,65 @@
 import SwiftUI
 
+@available(iOS 16.0, macOS 12.0, *)
+public struct MyApps: View {
+    
+    // Hide your current app by providing the bundle id from the current app.
+    var bundleID: String
 
-@available(iOS 14, macOS 11.0, *)
-public struct AnimatedMenuBar: View {
-    @Binding var selectedIndex: Int
-    @Namespace private var menuItemTransition
- 
-    var menuItems = [ "Travel", "Nature", "Architecture" ]
- 
-    public init(selectedIndex: Binding<Int>, menuItems: [String] = [ "Travel", "Nature", "Architecture" ]) {
-        self._selectedIndex = selectedIndex
-        self.menuItems = menuItems
+    public init(bundleID: String) {
+        self.bundleID = bundleID
     }
- 
+
     public var body: some View {
- 
-        HStack {
-            Spacer()
- 
-            ForEach(menuItems.indices) { index in
- 
-                if index == selectedIndex {
-                    Text(menuItems[index])
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        .background(Capsule().foregroundColor(Color.purple))
-                        .foregroundColor(.white)
-                        .matchedGeometryEffect(id: "menuItem", in: menuItemTransition)
-                } else {
-                    Text(menuItems[index])
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        .background(Capsule().foregroundColor(Color( red: 244, green: 244, blue: 244)))
-                        .onTapGesture {
-                            selectedIndex = index
+        VStack(alignment: .leading) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(myApps, id: \.id) { app in
+                        Button(action: {
+                            UIApplication.shared.open(app.url)
+                        }) {
+                            VStack {
+                                Image(app.image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 94)
+                                Text(app.name.capitalized)
+                            }
                         }
+                    }
                 }
- 
-                Spacer()
+            }.scrollContentBackground(.hidden)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    struct App: Identifiable {
+        var id = UUID()
+        var name: String
+        var image: String
+        var url: URL
+    }
+    
+    let myApps: [App] = [
+        .init(name: "Shoobie", image: "shoobie", url: URL(string: "https://apps.apple.com/app/apple-store/id1488166941?pt=120237833&ct=myapps&mt=8")!),
+        .init(name: "Demeter", image: "demeter", url: URL(string: "https://apps.apple.com/app/apple-store/id1614712181?pt=120237833&ct=myapps&mt=8")!),
+        .init(name: "Yorikiri", image: "yorikiri", url: URL(string: "https://apps.apple.com/app/apple-store/id6443876283?pt=120237833&ct=myapps&mt=8")!),
+        .init(name: "Densha", image: "densha-material", url: URL(string: "https://apps.apple.com/app/apple-store/id1603409310?pt=120237833&ct=myapps&mt=8")!)
+    ]
+}
+
+struct MyApps_Previews: PreviewProvider {
+    @available(iOS 13.0, *)
+    static var previews: some View {
+        List {
+            Section {
+                if #available(iOS 16.0, *) {
+                    MyApps(bundleID: "com.jeremieberduck.shoobie")
+                } else {
+                    // Fallback on earlier versions
+                }
             }
- 
+            .listRowInsets(.init())
+            .listRowBackground(Color.clear)
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .padding()
-        .animation(.easeInOut, value: selectedIndex)
- 
     }
 }
